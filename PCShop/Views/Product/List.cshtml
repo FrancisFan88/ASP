@@ -1,0 +1,22 @@
+﻿@*@model PCShop.ViewModels.ProductListVM*@
+@model PCShop.ViewModels.ProductListVM
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<h1>@Model.SelectedCategoryName</h1>
+@foreach (var product in Model.Products)
+{
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="@product.ImageUrl" alt="@product.ProductName">
+        <div class="card-body">
+            <h5 class="card-title">@product.ProductName</h5>
+            <h6 class="card-subtitle">@product.Category.Name</h6>
+
+            <p class="card-text">@product.ProductDescription</p>
+            <a asp-controller="Product" asp-action="Details"
+               asp-route-id="@product.ProductId" class="btn btn-primary">Product Details</a>
+            <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart"
+               asp-route-productId="@product.ProductId"
+               class="btn btn-primary">Add to Cart</a>
+        </div>
+    </div>
+
+}

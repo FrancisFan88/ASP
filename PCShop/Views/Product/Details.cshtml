@@ -1,0 +1,22 @@
+﻿@model Product
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="@Model.ImageUrl" class="card-img" alt="@Model.ProductName">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Product title</h5>
+                <p class="card-text">@Model.Category.Name</p>
+                <p class="card-text">@Model.ProductDescription</p>
+                <p class="card-text">@Model.ProductPrice</p>
+
+                <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart"
+                   asp-route-productId="@Model.ProductId"
+                   class="btn btn-primary">Add to Cart</a>
+
+            </div>
+        </div>
+    </div>
+</div>
